@@ -22,6 +22,7 @@ public class Author {
     private String username;
     @JsonIgnore
     private String password;
+    
     @ManyToOne(fetch = FetchType.EAGER)
     private List<Post> posts;
 
@@ -97,6 +98,7 @@ public class Author {
             return false;}
         return true;
     }
+}
 
 
   
