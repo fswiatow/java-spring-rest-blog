@@ -18,11 +18,16 @@ public class Author {
     private Long id;
     private String firstname;
     private String lastname;
+    @JsonIgnore
     private String username;
+    @JsonIgnore
     private String password;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private List<Post> posts;
 
     public Author() {
         super();
+        this.posts = new ArrayList<Post>();
     }
 
     public Author(String username, String firstname, String lastname, String password) {
@@ -68,6 +73,15 @@ public class Author {
     public String getPassword() {
         return password;
     }
+    
+    public List<Post> getPosts() {
+    	return posts;
+    }
+    
+    public void addPost(Post post) {
+        posts.add(post);
+    }
+
 
     @Override
     public boolean equals(Object obj) {
@@ -84,11 +98,5 @@ public class Author {
         return true;
     }
 
-    public List<Post> getPosts() {
-        return null;
-    }
 
-    public void addPost(Post post) {
-        return;
-    }
-}
+  
